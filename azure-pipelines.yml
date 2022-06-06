@@ -7,6 +7,9 @@
 trigger:
 - master
 
+variables:
+ imageName: 'TestImage'
+
 pool:
   vmImage: ubuntu-latest
 
@@ -21,6 +24,9 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+    allowBrokenSymlinks: 
+    
+
 - task: Docker@2
   inputs:
     containerRegistry: 'dockerreg'
