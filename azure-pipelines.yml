@@ -28,8 +28,8 @@ steps:
     
 
 - task: Docker@2
+  displayName: Build an image
   inputs:
-    containerRegistry: 'dockerreg'
-    repository: 'amitsarur / helloworld'
-    command: 'buildAndPush'
-    Dockerfile: './Dockerfile'
+    repository: $(imageName)
+    command: build
+    Dockerfile: app/Dockerfile
