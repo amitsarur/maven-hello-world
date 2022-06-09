@@ -24,12 +24,10 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-    
-    
-
 - task: Docker@2
-  displayName: Build an image
   inputs:
-    repository: $(imageName)
-    command: build
-    Dockerfile: ./Dockerfile
+    containerRegistry: 'Docker Hub'
+    repository: 'amitsarur / helloworld'
+    command: 'buildAndPush'
+    Dockerfile: './Dockerfile'
+    
