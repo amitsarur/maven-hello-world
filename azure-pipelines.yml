@@ -24,7 +24,7 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-    allowBrokenSymlinks: 
+    
     
 
 - task: Docker@2
@@ -32,4 +32,4 @@ steps:
   inputs:
     repository: $(imageName)
     command: build
-    Dockerfile: app/Dockerfile
+    Dockerfile: ./Dockerfile
