@@ -7,9 +7,6 @@
 trigger:
 - master
 
-variables:
- imageName: 'TestImage'
-
 pool:
   vmImage: ubuntu-latest
 
@@ -24,10 +21,12 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+
 - task: Docker@2
   inputs:
-    containerRegistry: 'Docker Hub'
-    repository: 'amitsarur/helloworld'
-    command: 'buildAndPush'
-    Dockerfile: './Dockerfile'
+             containerRegistry: 'DockerHub'
+             repository: 'amitsarur/helloworld'
+             command: 'buildAndPush'
+             Dockerfile: './Dockerfile'
+             
     
